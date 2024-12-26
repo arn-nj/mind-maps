@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?><opml version="1.0">
+    <head>
+        <expansionState>/opml[1]/body[1]/outline[1]</expansionState>
+        <vertScrollState>1</vertScrollState>
+    </head>
+    <body>
+        <outline text="Section 3- Coupons API Part 2">
+            <outline text="Setting Up the Project">
+                <outline text="Creating the Web Project">
+                    <outline text="Folder for Front-End Application"/>
+                    <outline text="Adding a New Project"/>
+                    <outline text="Choosing ASP.NET Core Web App with MVC"/>
+                    <outline text="Naming the Project: Mango.Web"/>
+                    <outline text="No Authentication Type"/>
+                </outline>
+                <outline text="Consuming the Coupon API">
+                    <outline text="Types of Requests: GET, POST, PUT, DELETE"/>
+                    <outline text="URL and Data Specification"/>
+                    <outline text="Creating Request and Response DTOs">
+                        <outline text="Copying Response DTO from Coupon API"/>
+                        <outline text="Changing Namespace to Mango.Web.Models"/>
+                        <outline text="Creating Request DTO">
+                            <outline text="API Type (Enum)"/>
+                            <outline text="URL"/>
+                            <outline text="Data"/>
+                            <outline text="Access Token"/>
+                        </outline>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Creating Enums and Utility Folder">
+                <outline text="Enum for API Type">
+                    <outline text="Creating a New Folder: Utility"/>
+                    <outline text="Adding Enum: APIType (GET, POST, PUT, DELETE)"/>
+                </outline>
+            </outline>
+            <outline text="Creating Service Interface">
+                <outline text="Interface for Base Service">
+                    <outline text="Creating Folder: Service"/>
+                    <outline text="Adding Interface: IBaseService"/>
+                    <outline text="Method: SendAsync">
+                        <outline text="Parameter: Request DTO"/>
+                        <outline text="Return Type: Task&lt;ResponseDTO&gt;"/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Implementing Base Service">
+                <outline text="Class for Base Service">
+                    <outline text="Implementing IBaseService"/>
+                    <outline text="Using HTTP Client Factory"/>
+                    <outline text="Configuring HTTP Client"/>
+                    <outline text="Setting Message Headers"/>
+                    <outline text="Serializing Data for POST/PUT Requests"/>
+                    <outline text="Handling Different API Types"/>
+                    <outline text="Sending Async Request"/>
+                    <outline text="Deserializing Response"/>
+                    <outline text="Error Handling"/>
+                </outline>
+            </outline>
+            <outline text="Creating Coupon Service">
+                <outline text="Interface for Coupon Service">
+                    <outline text="Creating Folder: IService"/>
+                    <outline text="Adding Interface: ICouponService"/>
+                    <outline text="Methods: GetCoupon, GetAllCoupons, GetCouponById, CreateCoupon, UpdateCoupon, DeleteCoupon"/>
+                </outline>
+                <outline text="Implementing Coupon Service">
+                    <outline text="Class for Coupon Service"/>
+                    <outline text="Dependency Injection for Base Service"/>
+                    <outline text="Implementing Interface Methods"/>
+                </outline>
+            </outline>
+            <outline text="Configuring Dependency Injection">
+                <outline text="Registering Services in Program.cs">
+                    <outline text="Adding HTTP Client Factory"/>
+                    <outline text="Configuring Coupon Service"/>
+                    <outline text="Registering Base Service and Coupon Service"/>
+                </outline>
+            </outline>
+            <outline text="Creating Coupon Controller">
+                <outline text="Adding Controller">
+                    <outline text="Creating Folder: Controllers"/>
+                    <outline text="Adding CouponController"/>
+                    <outline text="Dependency Injection for Coupon Service"/>
+                    <outline text="Index Action Method">
+                        <outline text="Displaying All Coupons"/>
+                        <outline text="Deserializing Response"/>
+                        <outline text="Returning View with List of CouponDTO"/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Creating Views">
+                <outline text="Coupon Index View">
+                    <outline text="Creating View for Coupon Index"/>
+                    <outline text="Displaying Coupons in a Table"/>
+                    <outline text="Adding ForEach Loop to Iterate Through Model"/>
+                </outline>
+                <outline text="Coupon Create View">
+                    <outline text="Creating View for Coupon Create"/>
+                    <outline text="Adding Form for Coupon Details"/>
+                    <outline text="Client-Side Validation"/>
+                </outline>
+                <outline text="Coupon Delete View">
+                    <outline text="Creating View for Coupon Delete"/>
+                    <outline text="Displaying Coupon Details"/>
+                    <outline text="Disabling Fields"/>
+                </outline>
+            </outline>
+            <outline text="Implementing CRUD Operations">
+                <outline text="Create Coupon">
+                    <outline text="Post Action Method for Coupon Create"/>
+                    <outline text="Server-Side Validation"/>
+                    <outline text="Invoking CreateCouponAsync"/>
+                    <outline text="Redirecting to Index Action"/>
+                </outline>
+                <outline text="Delete Coupon">
+                    <outline text="Post Action Method for Coupon Delete"/>
+                    <outline text="Invoking DeleteCouponAsync"/>
+                    <outline text="Redirecting to Index Action"/>
+                </outline>
+            </outline>
+            <outline text="Configuring Toaster Notifications">
+                <outline text="Adding Toaster CDN">
+                    <outline text="Adding Script and Stylesheet in _Layout"/>
+                </outline>
+                <outline text="Creating Partial View for Notifications">
+                    <outline text="Displaying Toaster Notifications for Success and Error"/>
+                </outline>
+                <outline text="Setting TempData for Notifications">
+                    <outline text="Adding TempData in Coupon Controller"/>
+                </outline>
+            </outline>
+            <outline text="Debugging and Testing">
+                <outline text="Debugging Issues">
+                    <outline text="Adding Debugging Points"/>
+                    <outline text="Examining Responses"/>
+                </outline>
+                <outline text="Testing Functionality">
+                    <outline text="Running the Application"/>
+                    <outline text="Verifying CRUD Operations"/>
+                    <outline text="Displaying Toaster Notifications"/>
+                </outline>
+            </outline>
+        </outline>
+    </body>
+</opml>

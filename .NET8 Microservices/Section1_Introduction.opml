@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?><opml version="1.0">
+    <head>
+        <expansionState>/opml[1]/body[1]/outline[1]</expansionState>
+        <vertScrollState>1</vertScrollState>
+    </head>
+    <body>
+        <outline text=".Net Microservices Section 1: Introduction">
+            <outline text="Introduction to the Course">
+                <outline text="Course Overview">
+                    <outline text="Purpose and Goals">
+                        <outline text="Introduce microservices architecture."/>
+                        <outline text="Provide real-world project experience."/>
+                        <outline text="Understand how microservices communicate and solve problems."/>
+                    </outline>
+                    <outline text="Instructor Introduction">
+                        <outline text="Instructor: Brogan."/>
+                        <outline text="Course Title: .NET Core Microservices: The Complete Guide."/>
+                    </outline>
+                </outline>
+                <outline text="Importance of Microservices">
+                    <outline text="Buzzword in Programming">
+                        <outline text="Microservices are increasingly important in job markets and system design."/>
+                        <outline text="Often suggested for lagging or large systems."/>
+                    </outline>
+                    <outline text="Motivation Behind the Course">
+                        <outline text="Understanding what microservices are and how to implement them correctly."/>
+                        <outline text="Providing a real-world project to see microservices in action."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="2. Understanding Microservices">
+                <outline text="Basic Concept">
+                    <outline text="Individual Projects">
+                        <outline text="Microservices are composed of individual APIs."/>
+                        <outline text="Building small APIs and understanding their communication."/>
+                    </outline>
+                    <outline text="Key Concepts">
+                        <outline text="Individual API communication."/>
+                        <outline text="How microservices architecture comes together."/>
+                    </outline>
+                </outline>
+                <outline text="Course Structure">
+                    <outline text="Building APIs">
+                        <outline text="Seven small APIs, including one for authentication using Dotnet Identity."/>
+                        <outline text="Focus on API communication and solving problems."/>
+                    </outline>
+                    <outline text="Keeping Content Up-to-Date">
+                        <outline text="Ensuring the course content is current to avoid struggles with new versions."/>
+                        <outline text="Excitement about learning microservices through real-world projects."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="3. Course Project Overview">
+                <outline text="Application Walkthrough">
+                    <outline text="Running the Application">
+                        <outline text="Multiple APIs and a web project."/>
+                        <outline text="Running all microservices and the web project simultaneously."/>
+                    </outline>
+                    <outline text="User Interaction">
+                        <outline text="Logging in as an admin user."/>
+                        <outline text="Landing page with products, login, register buttons, and manage order functionality."/>
+                        <outline text="Registering a customer user and logging in."/>
+                        <outline text="Managing orders, adding items to the shopping cart, applying coupon codes, and emailing the shopping cart."/>
+                        <outline text="Placing an order and redirecting to Stripe for payment."/>
+                        <outline text="Completing the order and logging in as admin to manage orders."/>
+                    </outline>
+                </outline>
+                <outline text="Backend Functionality">
+                    <outline text="Microservice Communication">
+                        <outline text="How microservices communicate to manage orders, rewards, and emails."/>
+                        <outline text="Automatic entries in rewards and email tables upon order placement."/>
+                    </outline>
+                    <outline text="Complexities and Background Processes">
+                        <outline text="Understanding the background processes and communications when placing orders or registering users."/>
+                        <outline text="Focus on the final application and the microservices architecture."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="4. Course Content Overview">
+                <outline text="Building APIs with .NET Core">
+                    <outline text="Authentication and Authorization">
+                        <outline text="Building an API for authentication using .NET Identity."/>
+                        <outline text="Familiarity with basics of API and CRUD functionalities with Entity Framework Core."/>
+                    </outline>
+                    <outline text="Recommended Prerequisites">
+                        <outline text="Free course on Dotnet Mastery for fundamentals of building a .NET API with Entity Framework Core."/>
+                    </outline>
+                </outline>
+                <outline text="Communication Between APIs">
+                    <outline text="Azure Service Bus">
+                        <outline text="Understanding queues, topics, subscriptions, and messaging."/>
+                        <outline text="Requires an Azure subscription with minimal cost."/>
+                    </outline>
+                    <outline text="Microservice Communication">
+                        <outline text="Getting comfortable with microservice communication using Service Bus."/>
+                    </outline>
+                </outline>
+                <outline text="Gateway and Deployment">
+                    <outline text="Ocelot Gateway">
+                        <outline text="Encapsulating microservices behind a gateway using Ocelot."/>
+                        <outline text="Deploying all code on Azure to see how microservices come together."/>
+                    </outline>
+                    <outline text="Best Practices">
+                        <outline text="Focus on best practices to avoid common issues and pitfalls."/>
+                        <outline text="Intentionally introducing bugs to demonstrate corrections."/>
+                    </outline>
+                </outline>
+                <outline text="Learning Approach">
+                    <outline text="Lengthy Course">
+                        <outline text="Covering a wide variety of topics with microservices."/>
+                        <outline text="Taking breaks and not overstressing to finish the course quickly."/>
+                        <outline text="Remembering the importance of slow and steady learning."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="5. Advantages of Microservices">
+                <outline text="Independent Deployability">
+                    <outline text="Deploying Individual Microservices">
+                        <outline text="Each microservice can be deployed individually without dependencies on other parts of the application."/>
+                        <outline text="Teams can work on and deploy microservices independently."/>
+                    </outline>
+                    <outline text="Comparison with Monolithic Applications">
+                        <outline text="Monolithic applications require deploying the complete project."/>
+                        <outline text="Microservices allow for deploying small, individual components."/>
+                    </outline>
+                </outline>
+                <outline text="Scalability">
+                    <outline text="Efficient Scaling">
+                        <outline text="Scaling specific microservices that need more resources."/>
+                        <outline text="Example: Scaling a microservice for bulk exports without affecting other microservices."/>
+                    </outline>
+                    <outline text="Comparison with Monolithic Applications">
+                        <outline text="Monolithic applications require scaling the entire server."/>
+                        <outline text="Microservices allow for scaling individual services efficiently."/>
+                    </outline>
+                </outline>
+                <outline text="Code Base and Fault Isolation">
+                    <outline text="Smaller Code Base">
+                        <outline text="Each microservice has a smaller code base compared to monolithic applications."/>
+                        <outline text="Microservices are typically responsible for one functionality."/>
+                    </outline>
+                    <outline text="Fault Isolation">
+                        <outline text="Individual microservices can go down without affecting the entire application."/>
+                        <outline text="Debugging and bringing a microservice back online is faster, reducing downtime."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="6. Example of Microservices Architecture">
+                <outline text="Front-End Application with Multiple Microservices">
+                    <outline text="Microservices for Different Functionalities">
+                        <outline text="Product management, shopping cart, order management, and email sending."/>
+                    </outline>
+                    <outline text="Handling Microservice Failures">
+                        <outline text="Example: Email microservice failure and message storage in a message broker."/>
+                        <outline text="Other microservices continue to function even if one microservice goes down."/>
+                    </outline>
+                    <outline text="Comparison with Monolithic Applications">
+                        <outline text="Monolithic applications go down entirely if the server fails."/>
+                        <outline text="Microservices architecture keeps the application running even if one microservice fails."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="7. Microservices vs. Monolithic Architecture">
+                <outline text="Monolithic Architecture">
+                    <outline text="Centralized Data and Code">
+                        <outline text="All data and code are centralized in one place."/>
+                        <outline text="Easier for developers to run and debug the complete application."/>
+                    </outline>
+                    <outline text="Advantages and Disadvantages">
+                        <outline text="Works fine for smaller applications."/>
+                        <outline text="Challenges arise as the application grows, leading to tight dependencies and scaling issues."/>
+                    </outline>
+                </outline>
+                <outline text="Microservices Architecture">
+                    <outline text="Loosely Coupled Services">
+                        <outline text="Individual microservices with their own databases and technology stacks."/>
+                        <outline text="Communication between microservices using REST API calls or message brokers."/>
+                    </outline>
+                    <outline text="Advantages">
+                        <outline text="Easier maintenance and scaling of individual services."/>
+                        <outline text="Flexibility in using different technologies and databases."/>
+                        <outline text="Efficient resource allocation and fault isolation."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="8. Tools and Prerequisites">
+                <outline text="Required Tools">
+                    <outline text="Visual Studio and .NET 8">
+                        <outline text="Visual Studio 2022 preview version for .NET 8."/>
+                        <outline text="Visual Studio 2022 with .NET 7 for those not using the preview version."/>
+                    </outline>
+                    <outline text="SQL Server">
+                        <outline text="SQL Server and SQL Server Management Studio for database management."/>
+                    </outline>
+                    <outline text="Azure Subscription">
+                        <outline text="Required for Azure Service Bus and other Azure services."/>
+                        <outline text="Minimal cost involved, with potential free credits for new Azure users."/>
+                    </outline>
+                </outline>
+                <outline text="Prerequisites">
+                    <outline text="Basic Understanding of .NET Core">
+                        <outline text="Familiarity with MVC programming and web application development."/>
+                    </outline>
+                    <outline text="Entity Framework Core">
+                        <outline text="Basic understanding of CRUD functionalities using Entity Framework Core."/>
+                    </outline>
+                    <outline text="API Development">
+                        <outline text="Basic understanding of building .NET APIs with Entity Framework Core."/>
+                    </outline>
+                    <outline text="Recommended Resources">
+                        <outline text="Free course on Dotnet Mastery for fundamentals of API and Entity Framework Core."/>
+                        <outline text="Project resources and course content available on courses.net.com."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="9. Clarifications and Misconceptions">
+                <outline text="Docker and Microservices">
+                    <outline text="Misconception">
+                        <outline text="Microservices and Docker are not related."/>
+                        <outline text="Docker can be used with monolithic applications as well."/>
+                    </outline>
+                    <outline text="Course Focus">
+                        <outline text="Focus on microservices architecture and API communication."/>
+                        <outline text="Avoiding additional complexity by not covering Docker."/>
+                    </outline>
+                </outline>
+                <outline text="Technology Stack">
+                    <outline text="Consistent Technology Stack">
+                        <outline text="Using .NET APIs, Entity Framework Core, and SQL Server for all microservices."/>
+                        <outline text="Avoiding multiple technology stacks to prevent confusion and maintain focus on microservices concepts."/>
+                    </outline>
+                    <outline text="Flexibility in Microservices">
+                        <outline text="Microservices can use different programming languages and databases."/>
+                        <outline text="Once the basic concepts are understood, implementing microservices in different technologies is straightforward."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="10. Course Prerequisites and Resources">
+                <outline text="Basic Understanding of .NET Core">
+                    <outline text="MVC Programming">
+                        <outline text="Familiarity with MVC programming and web application development."/>
+                    </outline>
+                    <outline text="Entity Framework Core">
+                        <outline text="Basic understanding of CRUD functionalities using Entity Framework Core."/>
+                    </outline>
+                    <outline text="API Development">
+                        <outline text="Basic understanding of building .NET APIs with Entity Framework Core."/>
+                    </outline>
+                </outline>
+                <outline text="Additional Resources">
+                    <outline text="Free Course on Dotnet Mastery">
+                        <outline text="Covers fundamentals of API and Entity Framework Core."/>
+                    </outline>
+                    <outline text="Project Resources">
+                        <outline text="Available on courses.net.com."/>
+                        <outline text="Includes GitHub code, snippets, images, and other course content."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="11. Conclusion">
+                <outline text="Excitement and Learning Journey">
+                    <outline text="Joining the Course">
+                        <outline text="Excitement about learning microservices and building a real-world project."/>
+                    </outline>
+                    <outline text="Next Steps">
+                        <outline text="Walkthrough of the application and microservices architecture in the next video."/>
+                        <outline text="Continuing the journey of understanding and implementing microservices."/>
+                    </outline>
+                </outline>
+            </outline>
+        </outline>
+    </body>
+</opml>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{303C8A80-F31E-445D-8D20-12DAFFBFF0F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{27C0BB44-D350-41A2-8755-13501F3CF92F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{C3DA730C-5F89-40AE-8188-F41CFA99701D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{0AB405B5-CB60-4BF8-BB25-8DDE26C99A79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Donkey.Coupons.Api", "Donkey.Coupons.Api\Donkey.Coupons.Api.csproj", "{F53A2745-0095-4E64-9CB8-E5519207B77B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Donkey.Web", "Donkey.Web\Donkey.Web.csproj", "{5FA1F00A-C044-4520-A839-E846EF9D3155}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F53A2745-0095-4E64-9CB8-E5519207B77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53A2745-0095-4E64-9CB8-E5519207B77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53A2745-0095-4E64-9CB8-E5519207B77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53A2745-0095-4E64-9CB8-E5519207B77B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA1F00A-C044-4520-A839-E846EF9D3155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA1F00A-C044-4520-A839-E846EF9D3155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA1F00A-C044-4520-A839-E846EF9D3155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA1F00A-C044-4520-A839-E846EF9D3155}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F53A2745-0095-4E64-9CB8-E5519207B77B} = {0AB405B5-CB60-4BF8-BB25-8DDE26C99A79}
+		{5FA1F00A-C044-4520-A839-E846EF9D3155} = {303C8A80-F31E-445D-8D20-12DAFFBFF0F3}
+	EndGlobalSection
+EndGlobal

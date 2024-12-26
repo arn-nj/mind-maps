@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?><opml version="1.0">
+    <head>
+        <expansionState>/opml[1]/body[1]/outline[1]</expansionState>
+        <vertScrollState>1</vertScrollState>
+    </head>
+    <body>
+        <outline text="LangChain Modules">
+            <outline text="* Introduction">
+                <outline text="* Exploration of LangChain Modules"/>
+                <outline text="* Documentation Website Overview"/>
+                <outline text="* Six Main Modules"/>
+            </outline>
+            <outline text="* Modules Overview">
+                <outline text="* Models">
+                    <outline text="Types of Models">
+                        <outline text="LMS (Language Models)">
+                            <outline text="Input: Prompts"/>
+                            <outline text="Output: Text Completion"/>
+                            <outline text="Benefits:">
+                                <outline text="Deterministic Output"/>
+                                <outline text="Creative Outputs"/>
+                                <outline text="Enhanced User Capabilities"/>
+                                <outline text="Complex Task Performance"/>
+                            </outline>
+                            <outline text="Examples of Prompts:">
+                                <outline text="Benefits of eating an apple a day"/>
+                                <outline text="Manufacturing process of bags"/>
+                                <outline text="Assembly of a laptop"/>
+                            </outline>
+                            <outline text="Types of LMS:">
+                                <outline text="GPT-3"/>
+                                <outline text="Bart Bloom"/>
+                                <outline text="Foundation Models"/>
+                                <outline text="Open Source LMS"/>
+                            </outline>
+                            <outline text="Open Source Distribution:">
+                                <outline text="Hugging Face">
+                                    <outline text="Features:">
+                                        <outline text="Community and Data Science Platform"/>
+                                        <outline text="Tools for Building, Training, and Deploying ML Models"/>
+                                        <outline text="Open Source Code and Technologies"/>
+                                        <outline text="Free Models"/>
+                                        <outline text="Account Creation and API Key Generation"/>
+                                    </outline>
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="Chat Models"/>
+                        <outline text="Text Embedding Models"/>
+                    </outline>
+                    <outline text="LMS Implementation">
+                        <outline text="User Interface:">
+                            <outline text="ChatGPT Example">
+                                <outline text="Steps:">
+                                    <outline text="Navigate to URL"/>
+                                    <outline text="Create Account"/>
+                                    <outline text="Start Using"/>
+                                </outline>
+                                <outline text="Example Query: What is the currency of India?"/>
+                                <outline text="Output: Indian Rupee"/>
+                            </outline>
+                        </outline>
+                        <outline text="Software Community Implementation:">
+                            <outline text="Using Lang Chain:">
+                                <outline text="Implement Applications"/>
+                                <outline text="Provide Facility to Customers"/>
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="Considerations for Choosing LMS">
+                        <outline text="Performance"/>
+                        <outline text="Cost"/>
+                        <outline text="Ease of Use"/>
+                        <outline text="Flexibility"/>
+                        <outline text="Budget and Requirements"/>
+                    </outline>
+                    <outline text="Additional Resources">
+                        <outline text="Hugging Face:">
+                            <outline text="Steps to Use:">
+                                <outline text="Create Account"/>
+                                <outline text="Generate Access Tokens"/>
+                                <outline text="Experiment with Models"/>
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="* Prompts">
+                    <outline text="* Template-Based Prompts: Structured prompts that guide the model to generate specific types of responses."/>
+                    <outline text="* Dynamic Prompts: Prompts that can be adjusted based on user input or context to provide more personalized responses."/>
+                </outline>
+                <outline text="* Memory">
+                    <outline text="* Short-Term Memory: Temporarily stores recent interactions to maintain context within a session."/>
+                    <outline text="* Long-Term Memory: Stores persistent information that can be recalled across multiple sessions."/>
+                </outline>
+                <outline text="* Indexes">
+                    <outline text="* Document Indexing: Organizes and stores documents for efficient retrieval and querying."/>
+                    <outline text="* Semantic Indexing: Indexes content based on meaning and context to improve search accuracy."/>
+                </outline>
+                <outline text="* Chains">
+                    <outline text="* Sequential Chains: Executes a series of tasks in a predefined order."/>
+                    <outline text="* Parallel Chains: Executes multiple tasks simultaneously to improve efficiency."/>
+                </outline>
+                <outline text="* Agents">
+                    <outline text="* Task-Specific Agents: Agents designed to perform specific tasks, such as customer support or data analysis."/>
+                    <outline text="* General-Purpose Agents: Agents capable of handling a wide range of tasks and adapting to different scenarios."/>
+                </outline>
+                <outline text="* Callbacks">
+                    <outline text="* Event-Driven Callbacks: Functions that are triggered by specific events, such as user actions or system updates."/>
+                    <outline text="* Asynchronous Callbacks: Functions that run in the background and can be used to handle long-running tasks without blocking the main process."/>
+                </outline>
+            </outline>
+            <outline text="* Models">
+                <outline text="* Applications">
+                    <outline text="* LMS Chart Models"/>
+                    <outline text="* Text Embedding Models"/>
+                </outline>
+                <outline text="* Detailed Understanding">
+                    <outline text="* LMS Chart Models"/>
+                    <outline text="* Text Embedding Models"/>
+                </outline>
+            </outline>
+        </outline>
+    </body>
+</opml>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?><opml version="1.0">
+    <head>
+        <expansionState>/opml[1]/body[1]/outline[1]</expansionState>
+        <vertScrollState>1</vertScrollState>
+    </head>
+    <body>
+        <outline text="Section 2 - Coupons API (Part1)">
+            <outline text="Setting Up the Project">
+                <outline text="Creating a New Project">
+                    <outline text="Opening Visual Studio">
+                        <outline text="Open Visual Studio to start a new project."/>
+                    </outline>
+                    <outline text="Selecting Project Type">
+                        <outline text="Since we are building a microservices architecture, we need to create individual projects."/>
+                        <outline text="Empty Solution">
+                            <outline text="Previously, there was an option for an empty solution, but it has been removed."/>
+                            <outline text="Create an ASP.NET Core empty project as a workaround."/>
+                        </outline>
+                    </outline>
+                    <outline text="Project Configuration">
+                        <outline text="Project Name and Solution Name">
+                            <outline text="Project name is not important, but the solution name should be &quot;mango.&quot;"/>
+                            <outline text="Framework: .NET 8."/>
+                            <outline text="Do not use top-level statements."/>
+                        </outline>
+                        <outline text="Creating the Project">
+                            <outline text="Hit the create button to generate the project."/>
+                            <outline text="Delete the temporary project to have an empty solution."/>
+                        </outline>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="2. Organizing the Solution">
+                <outline text="Folder Structure">
+                    <outline text="Front-End Folder">
+                        <outline text="Create a folder for the front-end application, which will be the MVC web application calling the microservices."/>
+                    </outline>
+                    <outline text="Gateway Folder">
+                        <outline text="Create a folder for the gateway, which will be used for advanced concepts with Gateway later in the course."/>
+                    </outline>
+                    <outline text="Integration Folder">
+                        <outline text="Create a folder for integration, which will handle messaging and related functionalities."/>
+                    </outline>
+                    <outline text="Services Folder">
+                        <outline text="Create a folder for services, where all microservices or API endpoints will be developed."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="3. Creating the First API">
+                <outline text="Sample API Project">
+                    <outline text="Creating a New API Project">
+                        <outline text="Create a new ASP.NET Core API project named &quot;sample API.&quot;"/>
+                        <outline text="Use .NET 9, enable OpenAPI support, and use controllers."/>
+                    </outline>
+                    <outline text="Installing Swashbuckle">
+                        <outline text="Install Swashbuckle ASP.NET Core via NuGet packages."/>
+                    </outline>
+                    <outline text="Configuring Swagger">
+                        <outline text="Open Program.cs and remove the default OpenAPI configuration."/>
+                        <outline text="Add builder.Services.AddSwaggerGen() to the service container."/>
+                        <outline text="Add app.UseSwagger() and app.UseSwaggerUI() to the pipeline for development."/>
+                    </outline>
+                    <outline text="Running the Application">
+                        <outline text="Change the launch settings to use IIS Express."/>
+                        <outline text="Modify launchSettings.json to set the default path to Swagger."/>
+                        <outline text="Run the application to ensure Swagger documentation loads by default."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="4. Creating the Coupon API">
+                <outline text="Project Setup">
+                    <outline text="Creating the Coupon API Project">
+                        <outline text="Create a new ASP.NET Core Web API project named &quot;mango.services.couponAPI.&quot;"/>
+                        <outline text="Use .NET 8 and controllers."/>
+                    </outline>
+                    <outline text="Configuring the Project">
+                        <outline text="Run the application to ensure it is set up correctly."/>
+                        <outline text="Update the port number to 7001 in launchSettings.json."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="5. Building the Coupon Model">
+                <outline text="Creating the Model">
+                    <outline text="Coupon Model">
+                        <outline text="Create a new folder for models and add a class file named &quot;Coupon.cs.&quot;"/>
+                        <outline text="Define properties: CouponID, CouponCode, DiscountAmount, and MinimumAmount."/>
+                    </outline>
+                    <outline text="DTO (Data Transfer Object)">
+                        <outline text="Create a DTO folder and add a class file named &quot;CouponDTO.cs.&quot;"/>
+                        <outline text="Copy the properties from the Coupon model to the CouponDTO."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="6. Setting Up the Database">
+                <outline text="Installing NuGet Packages">
+                    <outline text="AutoMapper">
+                        <outline text="Install AutoMapper and AutoMapper.Extensions.Microsoft.DependencyInjection."/>
+                    </outline>
+                    <outline text="Entity Framework Core">
+                        <outline text="Install Microsoft.EntityFrameworkCore.SqlServer."/>
+                        <outline text="Install Microsoft.EntityFrameworkCore.Tools."/>
+                        <outline text="Install Microsoft.AspNetCore.Authentication.JwtBearer."/>
+                    </outline>
+                    <outline text="Configuring the Database">
+                        <outline text="Create a new folder for data and add a class file named &quot;AppDbContext.cs.&quot;"/>
+                        <outline text="Implement the DbContext class and configure the connection string in appsettings.json."/>
+                        <outline text="Add the connection string to the service container in Program.cs."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="7. Creating the Database and Tables">
+                <outline text="Adding Migrations">
+                    <outline text="Initial Migration">
+                        <outline text="Use the Package Manager Console to add a migration named &quot;AddCouponToDB.&quot;"/>
+                        <outline text="Update the database to create the Coupon table."/>
+                    </outline>
+                    <outline text="Seeding the Database">
+                        <outline text="Override the OnModelCreating method in AppDbContext.cs to seed initial data."/>
+                        <outline text="Add a new migration named &quot;SeedCouponTables.&quot;"/>
+                        <outline text="Implement a method to apply migrations automatically on application startup."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="8. Building the Coupon API Controller">
+                <outline text="Creating the Controller">
+                    <outline text="CouponAPIController">
+                        <outline text="Add a new API controller named &quot;CouponAPIController.cs.&quot;"/>
+                        <outline text="Implement endpoints for CRUD operations: GetAll, GetById, GetByCode, Create, Update, and Delete."/>
+                    </outline>
+                    <outline text="Common Response DTO">
+                        <outline text="Create a class file named &quot;ResponseDTO.cs&quot; to define a common response structure."/>
+                        <outline text="Modify the controller to return ResponseDTO for all endpoints."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="9. Implementing AutoMapper">
+                <outline text="Configuring AutoMapper">
+                    <outline text="Mapping Configuration">
+                        <outline text="Create a new class file named &quot;MappingConfig.cs&quot; to define mapping configurations."/>
+                        <outline text="Register the mapping configuration in Program.cs."/>
+                    </outline>
+                    <outline text="Using AutoMapper in the Controller">
+                        <outline text="Inject AutoMapper using dependency injection."/>
+                        <outline text="Use AutoMapper to map between Coupon and CouponDTO in the controller endpoints."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="10. Finalizing the Coupon API">
+                <outline text="Testing the Endpoints">
+                    <outline text="Running the Application">
+                        <outline text="Run the application and use Swagger to test the endpoints."/>
+                        <outline text="Ensure that all CRUD operations (GetAll, GetById, GetByCode, Create, Update, Delete) are working as expected."/>
+                    </outline>
+                </outline>
+            </outline>
+        </outline>
+    </body>
+</opml>
