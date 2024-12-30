@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?><opml version="1.0">
+    <head>
+        <expansionState>/opml[1]/body[1]/outline[1]</expansionState>
+        <vertScrollState>1</vertScrollState>
+    </head>
+    <body>
+        <outline text="Section 4- Auth API (Detailed)">
+            <outline text="Setting Up the Auth API Project">
+                <outline text="Creating the Project:">
+                    <outline text="Example:">
+                        <outline text="Right-click on the solution, select &quot;Add&quot; &gt; &quot;New Project&quot;."/>
+                        <outline text="Choose &quot;API&quot; and name it &quot;mango.services.authAPI&quot;."/>
+                    </outline>
+                    <outline text="Project Creation:">
+                        <outline text="Insight: Ensuring the project is correctly set up is crucial for smooth development."/>
+                    </outline>
+                </outline>
+                <outline text="Installing NuGet Packages:">
+                    <outline text="Dependencies:">
+                        <outline text="Example: Copying packages from coupon API:">
+                            <outline text="&lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore&quot; Version=&quot;5.0.0&quot; /&gt;&lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore.Tools&quot; Version=&quot;5.0.0&quot; /&gt;&lt;PackageReference Include=&quot;Microsoft.AspNetCore.Identity.EntityFrameworkCore&quot; Version=&quot;5.0.0&quot; /&gt;"/>
+                        </outline>
+                        <outline text="Insight: Using existing packages saves time and ensures consistency."/>
+                    </outline>
+                </outline>
+                <outline text="Configuring Port Number:">
+                    <outline text="Port Number: 7002."/>
+                    <outline text="Launch Settings:">
+                        <outline text="Example: Update launchSettings.json:">
+                            <outline text="{ &quot;profiles&quot;: { &quot;IIS Express&quot;: { &quot;commandName&quot;: &quot;IISExpress&quot;, &quot;launchBrowser&quot;: true, &quot;environmentVariables&quot;: { &quot;ASPNETCORE_ENVIRONMENT&quot;: &quot;Development&quot; }, &quot;applicationUrl&quot;: &quot;http://localhost:7002&quot; } }}"/>
+                        </outline>
+                        <outline text="Insight: Ensuring the correct port number avoids conflicts with other services."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="2. Setting Up Entity Framework Core and DbContext">
+                <outline text="Entity Framework Core:">
+                    <outline text="Automatic Table Creation:">
+                        <outline text="Example: Dotnet identity automatically creates tables like ASPNetUsers, ASPNetRoles."/>
+                        <outline text="Insight: Automatic table creation saves development time and reduces errors."/>
+                    </outline>
+                </outline>
+                <outline text="DbContext Setup:">
+                    <outline text="Copying App Context:">
+                        <outline text="Example: Copying the data folder:">
+                            <outline text="public class ApplicationDbContext : IdentityDbContext&lt;ApplicationUser&gt;{ public ApplicationDbContext(DbContextOptions&lt;ApplicationDbContext&gt; options) : base(options) { }}"/>
+                        </outline>
+                        <outline text="Insight: Reusing code from existing projects ensures consistency."/>
+                    </outline>
+                    <outline text="IdentityDbContext:">
+                        <outline text="Example: Implementing IdentityDbContext:">
+                            <outline text="public class ApplicationDbContext : IdentityDbContext&lt;ApplicationUser&gt;{ public ApplicationDbContext(DbContextOptions&lt;ApplicationDbContext&gt; options) : base(options) { }}"/>
+                        </outline>
+                        <outline text="Insight: IdentityDbContext provides a structured way to manage identity data."/>
+                    </outline>
+                    <outline text="Updating Packages:">
+                        <outline text="Example: Ensuring packages are up-to-date:">
+                            <outline text="&lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore&quot; Version=&quot;5.0.0&quot; /&gt;&lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore.Tools&quot; Version=&quot;5.0.0&quot; /&gt;"/>
+                        </outline>
+                        <outline text="Insight: Keeping packages up-to-date ensures compatibility and access to new features."/>
+                    </outline>
+                </outline>
+                <outline text="Configuring DbContext:">
+                    <outline text="Defining User:">
+                        <outline text="Example: Using the default IdentityUser:">
+                            <outline text="public class ApplicationUser : IdentityUser{}"/>
+                        </outline>
+                        <outline text="Insight: Using IdentityUser provides a standardized way to manage user data."/>
+                    </outline>
+                    <outline text="Program.cs Configuration:">
+                        <outline text="Example: Copying configurations from coupon API:">
+                            <outline text="public class Program{ public static void Main(string[] args) { CreateHostBuilder(args).Build().Run(); } public static IHostBuilder CreateHostBuilder(string[] args) =&gt; Host.CreateDefaultBuilder(args) .ConfigureWebHostDefaults(webBuilder =&gt; { webBuilder.UseStartup&lt;Startup&gt;(); });}"/>
+                        </outline>
+                        <outline text="Insight: Copying configurations saves time and ensures consistency."/>
+                    </outline>
+                </outline>
+                <outline text="Authentication and Authorization:">
+                    <outline text="Pipeline Configuration:">
+                        <outline text="Example: Adding UseAuthentication before UseAuthorization:">
+                            <outline text="public void Configure(IApplicationBuilder app, IWebHostEnvironment env){ if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); } app.UseRouting(); app.UseAuthentication(); app.UseAuthorization(); app.UseEndpoints(endpoints =&gt; { endpoints.MapControllers(); });}"/>
+                        </outline>
+                        <outline text="Insight: Proper pipeline configuration ensures secure and authorized access."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="3. Configuring Dotnet Identity">
+                <outline text="Identity Configuration:">
+                    <outline text="Builder Services:">
+                        <outline text="Example: Using AddIdentity:">
+                            <outline text="services.AddIdentity&lt;ApplicationUser, IdentityRole&gt;() .AddEntityFrameworkStores&lt;ApplicationDbContext&gt;() .AddDefaultTokenProviders();"/>
+                        </outline>
+                        <outline text="Insight: AddIdentity provides a structured way to manage identity services."/>
+                    </outline>
+                </outline>
+                <outline text="Migration and Database Update:">
+                    <outline text="Adding Migration:">
+                        <outline text="Example: Commenting out OnModelCreating:">
+                            <outline text="protected override void OnModelCreating(ModelBuilder builder){ base.OnModelCreating(builder); // Customize the ASP.NET Identity model and override the defaults if needed. // For example, you can rename the ASP.NET Identity table names and more. // Add your customizations after calling base.OnModelCreating(builder);}"/>
+                        </outline>
+                        <outline text="Insight: Commenting out OnModelCreating avoids errors during migration."/>
+                    </outline>
+                    <outline text="Handling Errors:">
+                        <outline text="Example: Removing unnecessary methods:">
+                            <outline text="public class ApplicationDbContext : IdentityDbContext&lt;ApplicationUser&gt;{ public ApplicationDbContext(DbContextOptions&lt;ApplicationDbContext&gt; options) : base(options) { } protected override void OnModelCreating(ModelBuilder builder) { base.OnModelCreating(builder); }}"/>
+                        </outline>
+                        <outline text="Insight: Removing unnecessary methods ensures smooth migration."/>
+                    </outline>
+                    <outline text="Database Update:">
+                        <outline text="Example: Running the update database command:">
+                            <outline text="dotnet ef database update"/>
+                        </outline>
+                        <outline text="Insight: Running the update database command applies migrations and ensures the database is up-to-date."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="4. Extending Identity Tables">
+                <outline text="Adding Custom Properties:">
+                    <outline text="ApplicationUser Class:">
+                        <outline text="Example: Extending IdentityUser:">
+                            <outline text="public class ApplicationUser : IdentityUser{ public string Name { get; set; }}"/>
+                        </outline>
+                        <outline text="Insight: Extending IdentityUser allows for custom properties to be added."/>
+                    </outline>
+                    <outline text="Adding Migration:">
+                        <outline text="Example: Adding a new migration:">
+                            <outline text="dotnet ef migrations add AddNameToAspNetUsers"/>
+                        </outline>
+                        <outline text="Insight: Adding a new migration ensures the custom properties are included in the database."/>
+                    </outline>
+                    <outline text="Database Update:">
+                        <outline text="Example: Running the update database command:">
+                            <outline text="dotnet ef database update"/>
+                        </outline>
+                        <outline text="Insight: Running the update database command applies the new migration and ensures the database is up-to-date."/>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="5. Creating API Endpoints">
+                <outline text="Auth Controller:">
+                    <outline text="Creating Controller:">
+                        <outline text="Example: Deleting the default weather forecast controller:">
+                            <outline text="public class AuthController : ControllerBase{ // Endpoints will be defined here}"/>
+                        </outline>
+                        <outline text="Insight: Deleting the default controller ensures a clean slate for new endpoints."/>
+                    </outline>
+                    <outline text="Defining Endpoints:">
+                        <outline text="Register Endpoint:">
+                            <outline text="Example: Creating the register endpoint:">
+                                <outline text="[HttpPost(&quot;register&quot;)]public async Task&lt;IActionResult&gt; Register([FromBody] RegistrationRequestDTO model){ // Registration logic will be implemented here return Ok();}"/>
+                            </outline>
+                            <outline text="Insight: The register endpoint allows users to register and create an account."/>
+                        </outline>
+                        <outline text="Login Endpoint:">
+                            <outline text="Example: Creating the login endpoint:">
+                                <outline text="[HttpPost(&quot;login&quot;)]public async Task&lt;IActionResult&gt; Login([FromBody] LoginRequestDTO model){ // Login logic will be implemented here return Ok();}"/>
+                            </outline>
+                            <outline text="Insight: The login endpoint allows users to log in and receive a JWT token."/>
+                        </outline>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="6. DTOs and Models">
+                <outline text="Copying DTO Folder:">
+                    <outline text="Example: Copying the DTO folder from the coupon API:">
+                        <outline text="public class ResponseDTO{ public bool IsSuccess { get; set; } public string Message { get; set; }}"/>
+                    </outline>
+                    <outline text="Insight: Copying the DTO folder saves time and ensures consistency."/>
+                </outline>
+                <outline text="UserDTO:">
+                    <outline text="Example: Defining critical properties for the user:">
+                        <outline text="public class UserDTO{ public string Id { get; set; } public string Email { get; set; } public string Name { get; set; } public string PhoneNumber { get; set; }}"/>
+                    </outline>
+                    <outline text="Insight: UserDTO provides a structured way to manage user data."/>
+                </outline>
+                <outline text="RegistrationRequestDTO:">
+                    <outline text="Example: Including properties for name, email, phone number, and password:">
+                        <outline text="public class RegistrationRequestDTO{ public string Name { get; set; } public string Email { get; set; } public string PhoneNumber { get; set; } public string Password { get; set; }}"/>
+                    </outline>
+                    <outline text="Insight: RegistrationRequestDTO provides a structured way to manage registration data."/>
+                </outline>
+                <outline text="LoginRequestDTO:">
+                    <outline text="Example: Including properties for username and password:">
+                        <outline text="public class LoginRequestDTO{ public string Username { get; set; } public string Password { get; set; }}"/>
+                    </outline>
+                    <outline text="Insight: LoginRequestDTO provides a structured way to manage login data."/>
+                </outline>
+                <outline text="LoginResponseDTO:">
+                    <outline text="Example: Including properties for user data and JWT token:">
+                        <outline text="public class LoginResponseDTO{ public UserDTO User { get; set; } public string Token { get; set; }}"/>
+                    </outline>
+                    <outline text="Insight: LoginResponseDTO provides a structured way to manage login response data."/>
+                </outline>
+            </outline>
+            <outline text="7. Configuring JWT Authentication">
+                <outline text="AppSettings.json:">
+                    <outline text="Example: Adding a new section for JWT options:">
+                        <outline text="&quot;JWTOptions&quot;: { &quot;SecretKey&quot;: &quot;your_secret_key_here&quot;, &quot;Issuer&quot;: &quot;mango_auth_api&quot;, &quot;Audience&quot;: &quot;mango_client&quot;}"/>
+                    </outline>
+                    <outline text="Insight: Configuring JWT options ensures secure and authorized access."/>
+                </outline>
+                <outline text="JWTOptions Class:">
+                    <outline text="Example: Creating a class to hold JWT configuration values:">
+                        <outline text="public class JWTOptions{ public string SecretKey { get; set; } public string Issuer { get; set; } public string Audience { get; set; }}"/>
+                    </outline>
+                    <outline text="Insight: JWTOptions class provides a structured way to manage JWT configuration values."/>
+                </outline>
+                <outline text="Program.cs Configuration:">
+                    <outline text="Example: Configuring JWT options using dependency injection:">
+                        <outline text="public void ConfigureServices(IServiceCollection services){ services.Configure&lt;JWTOptions&gt;(Configuration.GetSection(&quot;JWTOptions&quot;));}"/>
+                    </outline>
+                    <outline text="Insight: Configuring JWT options using dependency injection ensures secure and authorized access."/>
+                </outline>
+                <outline text="JWT Token Generation:">
+                    <outline text="Example: Creating an interface and implementation for generating JWT tokens:">
+                        <outline text="public interface IJWTTokenGenerator{ string GenerateToken(ApplicationUser user);} public class JWTTokenGenerator : IJWTTokenGenerator{ private readonly JWTOptions _jwtOptions; public JWTTokenGenerator(IOptions&lt;JWTOptions&gt; jwtOptions) { _jwtOptions = jwtOptions.Value; } public string GenerateToken(ApplicationUser user) { var claims = new List&lt;Claim&gt; { new Claim(JwtRegisteredClaimNames.Sub, user.Id), new Claim(JwtRegisteredClaimNames.Email, user.Email), new Claim(JwtRegisteredClaimNames.Name, user.UserName), new Claim(&quot;Name&quot;, user.Name) }; var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey)); var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256); var token = new JwtSecurityToken( issuer: _jwtOptions.Issuer, audience: _jwtOptions.Audience, claims: claims, expires: DateTime.Now.AddDays(7), signingCredentials: creds); return new JwtSecurityTokenHandler().WriteToken(token); }}"/>
+                    </outline>
+                    <outline text="Insight: JWT token generation ensures secure and authorized access."/>
+                </outline>
+            </outline>
+            <outline text="8. Implementing Auth Service">
+                <outline text="AuthService Interface:">
+                    <outline text="Example: Defining methods for register, login, and assigning roles:">
+                        <outline text="public interface IAuthService{ Task&lt;string&gt; Register(RegistrationRequestDTO model); Task&lt;LoginResponseDTO&gt; Login(LoginRequestDTO model); Task&lt;bool&gt; AssignRole(string email, string roleName);}"/>
+                    </outline>
+                    <outline text="Insight: AuthService interface provides a structured way to manage authentication services."/>
+                </outline>
+                <outline text="AuthService Implementation:">
+                    <outline text="Example: Injecting necessary dependencies (DbContext, UserManager, RoleManager):">
+                        <outline text="public class AuthService : IAuthService{ private readonly ApplicationDbContext _db; private readonly UserManager&lt;ApplicationUser&gt; _userManager; private readonly RoleManager&lt;IdentityRole&gt; _roleManager; private readonly IJWTTokenGenerator _jwtTokenGenerator; public AuthService(ApplicationDbContext db, UserManager&lt;ApplicationUser&gt; userManager, RoleManager&lt;IdentityRole&gt; roleManager, IJWTTokenGenerator jwtTokenGenerator) { _db = db; _userManager = userManager; _roleManager = roleManager; _jwtTokenGenerator = jwtTokenGenerator; } public async Task&lt;string&gt; Register(RegistrationRequestDTO model) { var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, PhoneNumber = model.PhoneNumber }; var result = await _userManager.CreateAsync(user, model.Password); if (result.Succeeded) { return string.Empty; } else { return result.Errors.FirstOrDefault()?.Description; } } public async Task&lt;LoginResponseDTO&gt; Login(LoginRequestDTO model) { var user = await _userManager.FindByNameAsync(model.Username); if (user != null &amp;&amp; await _userManager.CheckPasswordAsync(user, model.Password)) { var token = _jwtTokenGenerator.GenerateToken(user); var userDTO = new UserDTO { Id = user.Id, Email = user.Email, Name = user.Name, PhoneNumber = user.PhoneNumber }; return new LoginResponseDTO { User = userDTO, Token = token }; } return new LoginResponseDTO { User = null, Token = string.Empty }; } public async Task&lt;bool&gt; AssignRole(string email, string roleName) { var user = await _userManager.FindByEmailAsync(email); if (user != null) { if (!await _roleManager.RoleExistsAsync(roleName)) { await _roleManager.CreateAsync(new IdentityRole(roleName)); } await _userManager.AddToRoleAsync(user, roleName); return true; } return false; }}"/>
+                    </outline>
+                    <outline text="Insight: AuthService implementation provides a structured way to manage authentication services."/>
+                </outline>
+                <outline text="Handling Registration:">
+                    <outline text="Example: Creating a new ApplicationUser based on registration request:">
+                        <outline text="public async Task&lt;string&gt; Register(RegistrationRequestDTO model){ var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, PhoneNumber = model.PhoneNumber }; var result = await _userManager.CreateAsync(user, model.Password); if (result.Succeeded) { return string.Empty; } else { return result.Errors.FirstOrDefault()?.Description; }}"/>
+                    </outline>
+                    <outline text="Insight: Handling registration ensures secure and authorized access."/>
+                </outline>
+                <outline text="Handling Login:">
+                    <outline text="Example: Retrieving the user based on username and generating a JWT token:">
+                        <outline text="public async Task&lt;LoginResponseDTO&gt; Login(LoginRequestDTO model){ var user = await _userManager.FindByNameAsync(model.Username); if (user != null &amp;&amp; await _userManager.CheckPasswordAsync(user, model.Password)) { var token = _jwtTokenGenerator.GenerateToken(user); var userDTO = new UserDTO { Id = user.Id, Email = user.Email, Name = user.Name, PhoneNumber = user.PhoneNumber }; return new LoginResponseDTO { User = userDTO, Token = token }; } return new LoginResponseDTO { User = null, Token = string.Empty };}"/>
+                    </outline>
+                    <outline text="Insight: Handling login ensures secure and authorized access."/>
+                </outline>
+            </outline>
+            <outline text="9. Assigning Roles to Users">
+                <outline text="AssignRole Method:">
+                    <outline text="Example: Defining a method to assign roles to users based on email and role name:">
+                        <outline text="public async Task&lt;bool&gt; AssignRole(string email, string roleName){ var user = await _userManager.FindByEmailAsync(email); if (user != null) { if (!await _roleManager.RoleExistsAsync(roleName)) { await _roleManager.CreateAsync(new IdentityRole(roleName)); } await _userManager.AddToRoleAsync(user, roleName); return true; } return false;}"/>
+                    </outline>
+                    <outline text="Insight: AssignRole method provides a structured way to manage role assignments."/>
+                </outline>
+                <outline text="Endpoint for Assigning Roles:">
+                    <outline text="Example: Creating a new endpoint to assign roles to users:">
+                        <outline text="[HttpPost(&quot;assign-role&quot;)]public async Task&lt;IActionResult&gt; AssignRole([FromBody] RegistrationRequestDTO model){ var result = await _authService.AssignRole(model.Email, model.RoleName); if (result) { return Ok(new ResponseDTO { IsSuccess = true, Message = &quot;Role assigned successfully&quot; }); } else { return BadRequest(new ResponseDTO { IsSuccess = false, Message = &quot;Error encountered&quot; }); }}"/>
+                    </outline>
+                    <outline text="Insight: Endpoint for assigning roles ensures secure and authorized access."/>
+                </outline>
+            </outline>
+            <outline text="10. Testing the Auth API">
+                <outline text="Registering a User:">
+                    <outline text="Example: Testing the register endpoint with sample data:">
+                        <outline text="{ &quot;name&quot;: &quot;John Doe&quot;, &quot;email&quot;: &quot;john.doe@example.com&quot;, &quot;phoneNumber&quot;: &quot;1234567890&quot;, &quot;password&quot;: &quot;Password123!&quot;}" type="link" url="mailto:john.doe@example.com&amp;quot"/>
+                    </outline>
+                    <outline text="Insight: Testing the register endpoint ensures the registration process is working as expected."/>
+                </outline>
+                <outline text="Logging In:">
+                    <outline text="Example: Testing the login endpoint with sample data:">
+                        <outline text="{ &quot;username&quot;: &quot;john.doe@example.com&quot;, &quot;password&quot;: &quot;Password123!&quot;}" type="link" url="mailto:john.doe@example.com&amp;quot"/>
+                    </outline>
+                    <outline text="Insight: Testing the login endpoint ensures the login process is working as expected."/>
+                </outline>
+                <outline text="Assigning Roles:">
+                    <outline text="Example: Testing the assign role endpoint with sample data:">
+                        <outline text="{ &quot;email&quot;: &quot;john.doe@example.com&quot;, &quot;roleName&quot;: &quot;Admin&quot;}" type="link" url="mailto:john.doe@example.com&amp;quot"/>
+                    </outline>
+                    <outline text="Insight: Testing the assign role endpoint ensures the role assignment process is working as expected."/>
+                </outline>
+            </outline>
+        </outline>
+    </body>
+</opml>

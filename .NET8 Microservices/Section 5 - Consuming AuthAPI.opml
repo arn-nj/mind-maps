@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?><opml version="1.0">
+    <head>
+        <expansionState>/opml[1]/body[1]/outline[1]</expansionState>
+        <vertScrollState>1</vertScrollState>
+    </head>
+    <body>
+        <outline text="Section 5 - Consuming AuthAPI">
+            <outline text="Setting Up the Web Project">
+                <outline text="Closing Tabs and Focusing on Web Project:">
+                    <outline text="Steps:">
+                        <outline text="Close all tabs to focus on the web project."/>
+                        <outline text="Ensure the web project is the active project."/>
+                    </outline>
+                    <outline text="Insight: Focusing on one project at a time helps in managing dependencies and configurations accurately."/>
+                </outline>
+                <outline text="Copying Models from Auth API:">
+                    <outline text="Steps:">
+                        <outline text="Copy all models from the Auth API DTO except the response DTO."/>
+                        <outline text="Change the namespace to mango.web.models."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="namespace mango.web.models{ public class LoginRequestDTO { public string Username { get; set; } public string Password { get; set; } }}"/>
+                    </outline>
+                    <outline text="Insight: Ensuring the correct namespace helps in organizing the code and avoiding conflicts."/>
+                </outline>
+                <outline text="Configuring Auth API URL:">
+                    <outline text="Steps:">
+                        <outline text="Add the Auth API base URL in appsettings.json."/>
+                        <outline text="Configure the URL in Program.cs."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="&quot;ApiSettings&quot;: { &quot;AuthApiBase&quot;: &quot;https://localhost:7002&quot;}"/>
+                        <outline text="builder.Services.Configure&lt;ApiSettings&gt;(builder.Configuration.GetSection(&quot;ApiSettings&quot;));"/>
+                    </outline>
+                    <outline text="Insight: Proper configuration of the API URL ensures smooth communication between the web project and the Auth API."/>
+                </outline>
+            </outline>
+            <outline text="2. Creating Auth Service in Web Project">
+                <outline text="Defining Interface:">
+                    <outline text="Steps:">
+                        <outline text="Create an interface IAuthService with methods for login, register, and assign role."/>
+                        <outline text="Define the methods to return ResponseDTO."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="public interface IAuthService{ Task&lt;ResponseDTO&gt; LoginAsync(LoginRequestDTO model); Task&lt;ResponseDTO&gt; RegisterAsync(RegistrationRequestDTO model); Task&lt;ResponseDTO&gt; AssignRoleAsync(RegistrationRequestDTO model);}"/>
+                    </outline>
+                    <outline text="Insight: Defining a clear interface helps in maintaining a structured and organized codebase."/>
+                </outline>
+                <outline text="Implementing Auth Service:">
+                    <outline text="Steps:">
+                        <outline text="Implement the IAuthService interface in AuthService class."/>
+                        <outline text="Use dependency injection to inject necessary services."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="public class AuthService : IAuthService{ private readonly HttpClient _httpClient; private readonly IConfiguration _configuration; public AuthService(HttpClient httpClient, IConfiguration configuration) { _httpClient = httpClient; _configuration = configuration; } public async Task&lt;ResponseDTO&gt; LoginAsync(LoginRequestDTO model) { // Implementation } public async Task&lt;ResponseDTO&gt; RegisterAsync(RegistrationRequestDTO model) { // Implementation } public async Task&lt;ResponseDTO&gt; AssignRoleAsync(RegistrationRequestDTO model) { // Implementation }}"/>
+                    </outline>
+                    <outline text="Insight: Implementing the service ensures that the web project can communicate with the Auth API effectively."/>
+                </outline>
+            </outline>
+            <outline text="3. Configuring HTTP Client and Dependency Injection">
+                <outline text="Adding HTTP Client:">
+                    <outline text="Steps:">
+                        <outline text="Add the HTTP client for the Auth service in Program.cs."/>
+                        <outline text="Configure the base address for the Auth API."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="builder.Services.AddHttpClient&lt;IAuthService, AuthService&gt;(client =&gt;{ client.BaseAddress = new Uri(builder.Configuration[&quot;ApiSettings:AuthApiBase&quot;]);});"/>
+                    </outline>
+                    <outline text="Insight: Configuring the HTTP client ensures that the web project can make API calls to the Auth API."/>
+                </outline>
+                <outline text="Adding Scoped Implementation:">
+                    <outline text="Steps:">
+                        <outline text="Add the scoped implementation for IAuthService."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="builder.Services.AddScoped&lt;IAuthService, AuthService&gt;();"/>
+                    </outline>
+                    <outline text="Insight: Adding the scoped implementation ensures that the Auth service is available throughout the application."/>
+                </outline>
+            </outline>
+            <outline text="4. Creating Authentication Controller">
+                <outline text="Adding Auth Controller:">
+                    <outline text="Steps:">
+                        <outline text="Create a new controller AuthController in the web project."/>
+                        <outline text="Inject the IAuthService using dependency injection."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="public class AuthController : Controller{ private readonly IAuthService _authService; public AuthController(IAuthService authService) { _authService = authService; } public IActionResult Login() { return View(new LoginRequestDTO()); } public IActionResult Register() { return View(new RegistrationRequestDTO()); }}"/>
+                    </outline>
+                    <outline text="Insight: Creating the Auth controller ensures that the web project can handle authentication-related actions."/>
+                </outline>
+                <outline text="Adding Navigation Links:">
+                    <outline text="Steps:">
+                        <outline text="Add navigation links for login and register in the layout view."/>
+                        <outline text="Use Razor syntax to conditionally display links based on user authentication status."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="&lt;ul class=&quot;navbar-nav&quot;&gt; @if (User.Identity.IsAuthenticated) { &lt;li class=&quot;nav-item&quot;&gt; &lt;a class=&quot;nav-link&quot; asp-area=&quot;&quot; asp-controller=&quot;Auth&quot; asp-action=&quot;Logout&quot;&gt;Logout&lt;/a&gt; &lt;/li&gt; } else { &lt;li class=&quot;nav-item&quot;&gt; &lt;a class=&quot;nav-link&quot; asp-area=&quot;&quot; asp-controller=&quot;Auth&quot; asp-action=&quot;Login&quot;&gt;Login&lt;/a&gt; &lt;/li&gt; &lt;li class=&quot;nav-item&quot;&gt; &lt;a class=&quot;nav-link&quot; asp-area=&quot;&quot; asp-controller=&quot;Auth&quot; asp-action=&quot;Register&quot;&gt;Register&lt;/a&gt; &lt;/li&gt; } &lt;/ul&gt;"/>
+                    </outline>
+                    <outline text="Insight: Adding navigation links ensures that users can easily access the login and register pages."/>
+                </outline>
+            </outline>
+            <outline text="5. Creating Views for Authentication">
+                <outline text="Adding Login View:">
+                    <outline text="Steps:">
+                        <outline text="Create a view for the login action."/>
+                        <outline text="Add a form with fields for username and password."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="@model LoginRequestDTO &lt;form asp-action=&quot;Login&quot; method=&quot;post&quot;&gt; &lt;div class=&quot;form-group&quot;&gt; &lt;label for=&quot;Username&quot;&gt;Username&lt;/label&gt; &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;Username&quot; name=&quot;Username&quot; required /&gt; &lt;/div&gt; &lt;div class=&quot;form-group&quot;&gt; &lt;label for=&quot;Password&quot;&gt;Password&lt;/label&gt; &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;Password&quot; name=&quot;Password&quot; required /&gt; &lt;/div&gt; &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Login&lt;/button&gt;&lt;/form&gt;"/>
+                    </outline>
+                    <outline text="Insight: Creating a login view ensures that users can enter their credentials to log in."/>
+                </outline>
+                <outline text="Adding Register View:">
+                    <outline text="Steps:">
+                        <outline text="Create a view for the register action."/>
+                        <outline text="Add a form with fields for name, email, phone number, password, and role."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="@model RegistrationRequestDTO &lt;form asp-action=&quot;Register&quot; method=&quot;post&quot;&gt; &lt;div class=&quot;form-group&quot;&gt; &lt;label for=&quot;Name&quot;&gt;Name&lt;/label&gt; &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;Name&quot; name=&quot;Name&quot; required /&gt; &lt;/div&gt; &lt;div class=&quot;form-group&quot;&gt; &lt;label for=&quot;Email&quot;&gt;Email&lt;/label&gt; &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;Email&quot; name=&quot;Email&quot; required /&gt; &lt;/div&gt; &lt;div class=&quot;form-group&quot;&gt; &lt;label for=&quot;PhoneNumber&quot;&gt;Phone Number&lt;/label&gt; &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;PhoneNumber&quot; name=&quot;PhoneNumber&quot; required /&gt; &lt;/div&gt; &lt;div class=&quot;form-group&quot;&gt; &lt;label for=&quot;Password&quot;&gt;Password&lt;/label&gt; &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;Password&quot; name=&quot;Password&quot; required /&gt; &lt;/div&gt; &lt;div class=&quot;form-group&quot;&gt; &lt;label for=&quot;Role&quot;&gt;Role&lt;/label&gt; &lt;select class=&quot;form-control&quot; id=&quot;Role&quot; name=&quot;Role&quot; required&gt; &lt;option value=&quot;&quot;&gt;Select Role&lt;/option&gt; &lt;option value=&quot;Admin&quot;&gt;Admin&lt;/option&gt; &lt;option value=&quot;Customer&quot;&gt;Customer&lt;/option&gt; &lt;/select&gt; &lt;/div&gt; &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Register&lt;/button&gt;&lt;/form&gt;"/>
+                    </outline>
+                    <outline text="Insight: Creating a register view ensures that users can enter their details to register."/>
+                </outline>
+            </outline>
+            <outline text="6. Implementing Post Action Methods">
+                <outline text="Register Post Method:">
+                    <outline text="Steps:">
+                        <outline text="Implement the post action method for register."/>
+                        <outline text="Call the RegisterAsync method of IAuthService."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="[HttpPost]public async Task&lt;IActionResult&gt; Register(RegistrationRequestDTO model){ var response = await _authService.RegisterAsync(model); if (response.IsSuccess) { TempData[&quot;Success&quot;] = &quot;Registration successful!&quot;; return RedirectToAction(&quot;Login&quot;); } else { ModelState.AddModelError(string.Empty, response.Message); return View(model); }}"/>
+                    </outline>
+                    <outline text="Insight: Implementing the register post method ensures that user registration is handled correctly."/>
+                </outline>
+                <outline text="Login Post Method:">
+                    <outline text="Steps:">
+                        <outline text="Implement the post action method for login."/>
+                        <outline text="Call the LoginAsync method of IAuthService."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="[HttpPost]public async Task&lt;IActionResult&gt; Login(LoginRequestDTO model){ var response = await _authService.LoginAsync(model); if (response.IsSuccess) { // Handle successful login return RedirectToAction(&quot;Index&quot;, &quot;Home&quot;); } else { ModelState.AddModelError(string.Empty, response.Message); return View(model); }}"/>
+                    </outline>
+                    <outline text="Insight: Implementing the login post method ensures that user login is handled correctly."/>
+                </outline>
+            </outline>
+            <outline text="7. Handling JWT Tokens">
+                <outline text="Storing JWT Token:">
+                    <outline text="Steps:">
+                        <outline text="Create an interface ITokenProvider for handling JWT tokens."/>
+                        <outline text="Implement the interface in TokenProvider class."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="public interface ITokenProvider{ void SetToken(string token); string GetToken(); void ClearToken();} public class TokenProvider : ITokenProvider{ private readonly IHttpContextAccessor _httpContextAccessor; public TokenProvider(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public void SetToken(string token) { _httpContextAccessor.HttpContext.Response.Cookies.Append(&quot;JWTToken&quot;, token); } public string GetToken() { return _httpContextAccessor.HttpContext.Request.Cookies[&quot;JWTToken&quot;]; } public void ClearToken() { _httpContextAccessor.HttpContext.Response.Cookies.Delete(&quot;JWTToken&quot;); }}"/>
+                    </outline>
+                    <outline text="Insight: Handling JWT tokens ensures that the token is stored securely and can be retrieved when needed."/>
+                </outline>
+                <outline text="Using JWT Token in API Calls:">
+                    <outline text="Steps:">
+                        <outline text="Modify the base service to include the JWT token in API calls."/>
+                        <outline text="Use the ITokenProvider to retrieve the token."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="public class BaseService{ private readonly HttpClient _httpClient; private readonly ITokenProvider _tokenProvider; public BaseService(HttpClient httpClient, ITokenProvider tokenProvider) { _httpClient = httpClient; _tokenProvider = tokenProvider; } protected async Task&lt;HttpResponseMessage&gt; SendAsync(HttpRequestMessage request) { var token = _tokenProvider.GetToken(); if (token != null) { request.Headers.Authorization = new AuthenticationHeaderValue(&quot;Bearer&quot;, token); } return await _httpClient.SendAsync(request); }}"/>
+                    </outline>
+                    <outline text="Insight: Including the JWT token in API calls ensures that the calls are authenticated and authorized."/>
+                </outline>
+            </outline>
+            <outline text="8. Handling User Authentication in Web Project">
+                <outline text="Signing In User:">
+                    <outline text="Steps:">
+                        <outline text="Create a method SignInUserAsync to sign in the user using Dotnet Identity."/>
+                        <outline text="Use the JwtSecurityTokenHandler to read the JWT token and extract claims."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="private async Task SignInUserAsync(LoginResponseDTO model){ var handler = new JwtSecurityTokenHandler(); var jsonToken = handler.ReadToken(model.Token) as JwtSecurityToken; var identity = new ClaimsIdentity(cookieAuthenticationDefaults.AuthenticationScheme); identity.AddClaim(new Claim(ClaimTypes.Name, jsonToken.Claims.First(claim =&gt; claim.Type == &quot;Name&quot;).Value)); identity.AddClaim(new Claim(ClaimTypes.Role, jsonToken.Claims.First(claim =&gt; claim.Type == &quot;Role&quot;).Value)); var principal = new ClaimsPrincipal(identity); await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);}"/>
+                    </outline>
+                    <outline text="Insight: Signing in the user ensures that the user's identity is authenticated and authorized."/>
+                </outline>
+                <outline text="Displaying User Information:">
+                    <outline text="Steps:">
+                        <outline text="Update the layout view to display the user's email if they are authenticated."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="@if (User.Identity.IsAuthenticated) { &lt;p&gt;Hello, @User.Identity.Name&lt;/p&gt;}"/>
+                    </outline>
+                    <outline text="Insight: Displaying user information ensures that the user knows they are logged in and can see their details."/>
+                </outline>
+            </outline>
+            <outline text="9. Handling Logout">
+                <outline text="Implementing Logout:">
+                    <outline text="Steps:">
+                        <outline text="Implement the logout action method to sign out the user and clear the JWT token."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="public async Task&lt;IActionResult&gt; Logout(){ await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme); _tokenProvider.ClearToken(); return RedirectToAction(&quot;Index&quot;, &quot;Home&quot;);}"/>
+                    </outline>
+                    <outline text="Insight: Implementing the logout action method ensures that the user is signed out and the JWT token is cleared."/>
+                </outline>
+            </outline>
+            <outline text="10. Configuring Authentication in Coupon API">
+                <outline text="Adding Authentication to Coupon API:">
+                    <outline text="Steps:">
+                        <outline text="Add authentication to the Coupon API in Program.cs."/>
+                        <outline text="Validate the JWT token using the secret, issuer, and audience."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) .AddJwtBearer(options =&gt; { options.TokenValidationParameters = new TokenValidationParameters { ValidateIssuerSigningKey = true, IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration[&quot;ApiSettings:Secret&quot;])), ValidateIssuer = true, ValidIssuer = builder.Configuration[&quot;ApiSettings:Issuer&quot;], ValidateAudience = true, ValidAudience = builder.Configuration[&quot;ApiSettings:Audience&quot;], ValidateLifetime = true }; });"/>
+                    </outline>
+                    <outline text="Insight: Adding authentication to the Coupon API ensures that the API calls are authenticated and authorized."/>
+                </outline>
+                <outline text="Adding Authorization to Coupon API:">
+                    <outline text="Steps:">
+                        <outline text="Add authorization to the Coupon API controller actions."/>
+                        <outline text="Use the Authorize attribute to specify the roles."/>
+                    </outline>
+                    <outline text="Example:">
+                        <outline text="[Authorize(Roles = &quot;Admin&quot;)]public IActionResult CreateCoupon(){ // Implementation}"/>
+                    </outline>
+                    <outline text="Insight: Adding authorization to the Coupon API ensures that only authorized users can access certain actions."/>
+                </outline>
+            </outline>
+            <outline text="Conclusion:">
+                <outline text="Successful Integration:">
+                    <outline text="The web project is successfully set up to consume the Auth API."/>
+                    <outline text="Authentication and authorization are configured and working as expected."/>
+                </outline>
+                <outline text="Future Considerations:">
+                    <outline text="Integrate the Auth API with other services as needed."/>
+                    <outline text="Implement additional security measures and role-based access control."/>
+                </outline>
+            </outline>
+        </outline>
+    </body>
+</opml>

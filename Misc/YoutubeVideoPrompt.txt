@@ -1,0 +1,20 @@
+"Generate a detailed mind map for the YouTube video titled '[YouTube Video Title]'.
+
+Identify the Central Node:
+
+Determine the central theme or main topic of the video.
+Break Down into Main Topics:
+
+List the main topics or sections discussed in the video.
+Detail Each Main Topic:
+
+For each main topic, provide a brief description.
+List the subtopics under each main topic. 
+Include a brief description for each subtopic.
+and expand with brief description subtopics and do the same
+Suggest visual prompts (images or symbols) that can represent each subtopic visually.
+Create the Mind Map:
+
+Start with the central node.
+Branch out to the main topics.
+Further branch out to the subtopics with their descriptions and visual prompts.
